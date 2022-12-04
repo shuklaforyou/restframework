@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}poll by {username} {% endblock %}
+{% block main %}
+
+{% for poll in polls %}
+   <div class="card" style="width: 18rem; margin-left:35px ;
+  margin-top: 20px; display:flex;">
+  <div class="card-body" >
+    <h5 class="card-title">{{poll.user}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted"></h6>
+    <p class="card-text">{{ poll.question }}</p>
+    <a href="{% url 'vote' poll.id %}" class="card-link">View</a>
+    <a href="{% url 'result' poll.id %}" class="card-link">View-results</a>
+    <a href="{% url 'profile_poll_delete' poll.id %}" class="card-link">Delete</a>
+  </div>
+   </div>
+
+{% endfor %}
+
+
+{% endblock %}
